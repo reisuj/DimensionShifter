@@ -6,6 +6,8 @@ public class DimensionFlipScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject _player;
+    [SerializeField]
+    private Transform _centerPoint;
 
     public float rotationSpeed = 90f;
     private bool isRotating = false;
@@ -21,6 +23,7 @@ public class DimensionFlipScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             _player.GetComponent<Player>().TogglePhasing();
+            Vector3 targetPosition = new Vector3(_centerPoint.position.x, transform.position.y, transform.position.z);
             if (!isRotating)
             {
                 targetRotation += 180f;
